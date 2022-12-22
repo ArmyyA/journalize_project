@@ -24,7 +24,7 @@ export default function Nav() {
         )}
         {user && (
           <div className="flex items-center gap-12">
-            <Link className="font-medium" href="/post">
+            <Link className="font-medium" href="/posts">
               Post
             </Link>
             <Link href="/dashboard">
