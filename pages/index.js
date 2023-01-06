@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Message from "../components/message";
 
 export default function Home() {
   return (
@@ -9,7 +10,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main></main>
+      <div className="my-12 text-lg font-medium">
+        <h2 className="text-2xl">See what others are saying</h2>
+        <Message />
+      </div>
     </div>
   );
 }

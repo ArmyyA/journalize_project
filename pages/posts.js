@@ -3,6 +3,7 @@ import { auth, db } from "../utils/firebase";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 export default function Post() {
   //State of Form
@@ -13,6 +14,25 @@ export default function Post() {
   // Journalize entry
   const submitPost = async (e) => {
     e.preventDefault();
+
+    // Validate bounds
+    if (!post.description) {
+      toast.error("Description is empty!", {
+        position: toast.POSITION.BOTTOM_LEFT,
+        autoClose: 1500,
+      });
+
+      return;
+    }
+
+    if (post.description.length > 300) {
+      toast.error("Description is too long!", {
+        position: toast.POSITION.BOTTOM_LEFT,
+        autoClose: 1500,
+      });
+
+      return;
+    }
 
     // Creating a post
     const collectionRef = collection(db, "posts");
